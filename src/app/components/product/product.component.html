@@ -1,7 +1,21 @@
+<div class="spinner-border text-danger" *ngIf="dataLoaded==false" role="status" style="position:absolute;padding: auto;">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 <table class="table table-striped table-hover table-">
-    <tr *ngFor="let product of products">
-        <td>{{ product.productName }}</td>
-        <td>{{ product.productId }}</td>
-        <td>{{ product.categoryId }}</td>
-    </tr>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Product Name</th>
+            <th>Category Id</th>
+            <th>Fee</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+  <tr *ngFor="let product of products">
+    <td>{{ product.productName }}</td>
+    <td>{{ product.productId }}</td>
+    <td>{{ product.categoryId }}</td>
+    <td>{{ product.unitPrice }}</td>
+    <td>{{ product.unitsInStock }}</td>
+  </tr>
 </table>

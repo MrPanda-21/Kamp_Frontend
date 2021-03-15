@@ -1,19 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product';
+import { HttpClient } from '@angular/common/http'
+import { ProductResponseModule } from 'src/app/models/productResponseModel';
+import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
+
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  product1 = {productName: 'Camera',productId :1,categoryId:1}
-  product2 = {productName: 'WebToken',productId:2,categoryId:2}
-  product3 = {productName: 'Telephone',productId:3,categoryId:1}
 
-  products = [this.product1,this.product2,this.product3]
-  constructor() { }
+  products: Product[] = [];
+  dataLoaded=false
+  
+  
+  constructor(private _productService: ProductService) {}
 
   ngOnInit(): void {
+    this.getProducts();
   }
 
+  getProducts(){
+    this._productService.getProducts().subscribe(response => {
+      this.products =response.data 
+      this.dataLoaded = true
+    })
+  }
 }
