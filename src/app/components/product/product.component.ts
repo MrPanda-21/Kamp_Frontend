@@ -13,8 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductComponent implements OnInit {
 
   products: Product[] = [];
-  dataLoaded=false
-  
+  dataLoaded=false;
+  filterText:string; 
   
   constructor(private _productService: ProductService, private _activatedRoute: ActivatedRoute) {}
 
