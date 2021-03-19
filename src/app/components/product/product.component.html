@@ -18,14 +18,19 @@
             <th>Fee</th>
             <th>Vat added Fee </th>
             <th>Amount</th>
+            <th></th>
         </tr>
     </thead>
-  <tr *ngFor="let product of products | filterPipe:filterText">
-    <td>{{ product.productName }}</td>
-    <td>{{ product.productId | uppercase }}</td>
-    <td>{{ product.categoryId | lowercase }}</td>
-    <td>{{ product.unitPrice |currency}}</td>
-    <td>{{ product.unitPrice | vatAdded:10 | currency}}</td>
-    <td>{{ product.unitsInStock }}</td>
-  </tr>
+    <tbody>
+      <tr *ngFor="let product of products | filterPipe:filterText">
+        <td>{{ product.productName }}</td>
+        <td>{{ product.productId | uppercase }}</td>
+        <td>{{ product.categoryId | lowercase }}</td>
+        <td>{{ product.unitPrice |currency}}</td>
+        <td>{{ product.unitPrice | vatAdded:10 | currency}}</td>
+        <td>{{ product.unitsInStock }}</td>
+        <td><button (click)="addToCart(product)" type="button" class="btn btn-success">Sepete Ekle</button></td>
+      </tr>
+    </tbody>
+  
 </table>
